@@ -1,0 +1,191 @@
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+}
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    max-height: 80vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styling */
+.modal-header {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #333;
+    text-align: center;
+}
+
+/* Input Fields */
+.input-field {
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-field:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Button Styling */
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.btn-save, .btn-delete, .btn-cancel {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-save {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-save:hover {
+    background-color: #45a049;
+}
+
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #d32f2f;
+}
+
+.btn-cancel {
+    background-color: #ccc;
+    color: black;
+}
+
+.btn-cancel:hover {
+    background-color: #999;
+}
+
+/* Make Modal Responsive */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 90%;
+    }
+}
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #c0c0c0;
+    border-radius: 8px;
+}
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Optional: make sidebar a fixed width */
+.app-container > :first-child {
+    width: 250px;
+    border-right: 1px solid #e0e0e0;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+}
+
+/* Calendar should take the rest of the space */
+.app-container > :last-child {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+}
+.app-container {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+}
+
+.scroll-section {
+    max-height: 200px;        /* Set a max height for the scroll area */
+    overflow-y: scroll;       /* Enable vertical scrolling */
+    margin-bottom: 1rem;
+    padding-right: 4px;       /* Optional, gives space for the scrollbar */
+}
+
+/* Optional for WebKit browsers like Chrome/Edge/Safari */
+.scroll-section::-webkit-scrollbar {
+    width: 8px;               /* Scrollbar width */
+}
+
+.scroll-section::-webkit-scrollbar-thumb {
+    background-color: #888;   /* Scrollbar thumb color */
+    border-radius: 4px;       /* Round corners */
+}
+
+.scroll-section::-webkit-scrollbar-track {
+    background: #f1f1f1;      /* Scrollbar track color */
+}
+
+/* Optional Firefox style */
+.scroll-section {
+    scrollbar-width: thin;    /* Thin scrollbar for Firefox */
+    scrollbar-color: #888 #f1f1f1; /* Thumb and track colors */
+}
+
