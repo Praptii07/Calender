@@ -1,13 +1,40 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+require('dotenv').config(); // Load environment variables from .env
 
 const app = express();
-app.use(cors());
+
+// CORS config – replace with your actual frontend domain
+const allowedOrigins = [
+    'http://localhost:5173',
+    'https://calendar-app.vercel.app'
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        // allow requests with no origin (like mobile apps or curl requests)
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+}));
+
 app.use(express.json());
 
-mongoose.connect('mongodb://localhost/calendar', { useNewUrlParser: true, useUnifiedTopology: true });
+// MongoDB Atlas connection
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+    .then(() => console.log('Connected to MongoDB Atlas'))
+    .catch((err) => console.error('MongoDB connection error:', err));
 
+// Mongoose Models
 const Event = mongoose.model('Event', new mongoose.Schema({
     title: String,
     category: String,
@@ -57,4 +84,6 @@ app.get('/api/tasks/:goalId', async (req, res) => {
     res.json(tasks);
 });
 
-app.listen(5000, () => console.log('Server is running on port 5000'));
+// Use environment variable for port
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

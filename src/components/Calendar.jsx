@@ -17,12 +17,12 @@ const Calendar = () => {
         dispatch(fetchEvents());
     }, [dispatch]);
 
-    // Convert events' start/end to Date objects
-    const processedEvents = events.map(event => ({
+    // Ensure events is an array before processing
+    const processedEvents = Array.isArray(events) ? events.map(event => ({
         ...event,
         start: new Date(event.start),
         end: new Date(event.end)
-    }));
+    })) : [];
 
     const handleSelectEvent = (event) => {
         console.log('Selected Event:', event);
